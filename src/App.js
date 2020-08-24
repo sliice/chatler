@@ -11,6 +11,7 @@ import {
     TextBox
 } from './Components'
 import {answer} from "./Answer";
+import './helpers/font-face.css';
 
 const App = () => {
 
@@ -40,7 +41,8 @@ const App = () => {
              overflow: visible;
              border: 1px solid white;  
              border-radius: 60px;              
-             font-size: 13pt;    
+             font-size: 13pt; 
+             font-family: Alata;   
              color: white;   
              padding: 15px 40px;
              margin-bottom: 15px;          
@@ -60,6 +62,7 @@ const App = () => {
                  border: 1px solid tomato;  
                  border-radius: 60px;              
                  font-size: 13pt;    
+                 font-family: Alata; 
                  color: white;   
                  padding: 15px 40px;
                  margin-bottom: 15px;             
@@ -87,7 +90,7 @@ const App = () => {
           <ChatBox>
               <Title> Room {room} </Title>
               <Chat id = 'chat'/>
-              <TextBox id = 'messageArea' placeholder = 'Type your message' onKeyDown = {e => checkMessage(e)}/>
+              <TextBox id = 'messageArea' placeholder = 'Type your message and press enter' onKeyDown = {e => checkMessage(e)}/>
           </ChatBox>
 
       </MainBox>

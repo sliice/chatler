@@ -1,5 +1,5 @@
-import styled, {keyframes} from "styled-components";
-import './font-face.css';
+import styled from "styled-components";
+import './helpers/font-face.css';
 
 const pageW = window.innerWidth;
 const pageH = window.innerHeight;
