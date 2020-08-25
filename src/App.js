@@ -5,10 +5,11 @@ import {
     ChatBox,
     Title,
     Rooms,
-    Chat,
     RoomName,
     Me,
-    TextBox
+    TextBox,
+    ScrollingArea,
+    Chat
 } from './Components'
 import {answer} from "./Answer";
 import './helpers/font-face.css';
@@ -21,8 +22,12 @@ const App = () => {
     const wannaSwitchRoom = async (e) => {
         e.preventDefault();
         let length = e.target.id.length;
-        let id = e.target.id;
-        await switchRoom(id.slice(length - 1, length));
+        let id = e.target.id.slice(length - 1, length);
+        await switchRoom(id);
+        document.getElementById('chat1').style.display = 'none';
+        document.getElementById('chat2').style.display = 'none';
+        document.getElementById('chat3').style.display = 'none';
+        document.getElementById('chat' + id).style.display = 'flex';
     }
 
     const checkMessage = e => {
@@ -49,7 +54,8 @@ const App = () => {
             `;
 
             newMessage.innerHTML = text;
-            document.getElementById('chat').append(newMessage);
+            document.getElementById('chat' + room).append(newMessage);
+            document.getElementById('scrollingArea').scrollTop = document.getElementById('scrollingArea').scrollHeight;
             document.getElementById('messageArea').value = '';
             document.getElementById('messageArea').focus();
 
@@ -68,7 +74,8 @@ const App = () => {
                  margin-bottom: 15px;             
                 `;
                 newAnswer.innerHTML = answer(text);
-                document.getElementById('chat').append(newAnswer);
+                document.getElementById('chat' + room).append(newAnswer);
+                document.getElementById('scrollingArea').scrollTop = document.getElementById('scrollingArea').scrollHeight;
             }, 1000);
         }
     }
@@ -89,7 +96,11 @@ const App = () => {
 
           <ChatBox>
               <Title> Room {room} </Title>
-              <Chat id = 'chat'/>
+              <ScrollingArea id = 'scrollingArea'>
+                <Chat id = 'chat1'/>
+                <Chat id = 'chat2'/>
+                <Chat id = 'chat3'/>
+              </ScrollingArea>
               <TextBox id = 'messageArea' placeholder = 'Type your message and press enter' onKeyDown = {e => checkMessage(e)}/>
           </ChatBox>
 

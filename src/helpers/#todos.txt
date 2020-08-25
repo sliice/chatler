@@ -1,3 +1,2 @@
-1. Solve the chat-scrolling problem.
-2. Implement room switching.
-3. Animate it.
+1. Fix message overflow.
+2. Animate it.

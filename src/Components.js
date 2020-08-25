@@ -64,27 +64,23 @@ export const Me = styled.div`
       border-top: 1px solid #4A4A4A;                                                                
      `;
 
-export const Chat = styled.div`
-      display: flex;     
-      grid-row: 2;                      
-      flex-direction: column;
-      justify-content: flex-end;
-      align-items: flex-end;      
-      font-size: 13pt;
-      padding: 30px 40px;      
-      overflow: auto;  
+export const ScrollingArea = styled.div`
+      display: block;                
+      grid-row: 2;            
+      overflow: scroll;
       flex: 1;
-      min-height: 0;                               
+      min-height: 0;
      `;
 
-export const Message = styled.div`
-     display: block;     
-     max-width: 50px;    
-     border: 1px solid white;  
-     border-radius: 60px;              
-     font-size: 13pt;    
-     color: white;   
-     padding: 15px 40px;       
+export const Chat = styled.div`
+      display: flex;           
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: flex-end;
+      position: relative;
+      bottom: 0;
+      font-size: 13pt;
+      padding: 30px 40px;      
      `;
 
 export const TextBox = styled.textarea`
@@ -92,23 +88,14 @@ export const TextBox = styled.textarea`
       grid-row: 3;   
       background: #2A2A2A;
       color: white;
-      font-size: 15pt;      
+      font-family: Alata;
+      font-size: 13pt;      
       padding: 15px 40px;  
       border: none;
       border-top: 1px solid #4A4A4A;   
-      resize: none;    
+      resize: none;  
+        
       &:focus {
       outline: none;
       }`;
-
-// export const SendButton = styled.div`
-//         display: block;
-//         width: 50px;
-//         height: 50px;
-//         border-radius: 50px;
-//         background: #EE0000;
-//         position: absolute;
-//         right: 50px;
-//         bottom: 60px;
-//     `;
 
