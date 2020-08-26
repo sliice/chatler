@@ -21,12 +21,10 @@ const App = () => {
 
     const wannaSwitchRoom = async (e) => {
         e.preventDefault();
+        document.getElementById('chat' + room).style.display = 'none';
         let length = e.target.id.length;
         let id = e.target.id.slice(length - 1, length);
         await switchRoom(id);
-        document.getElementById('chat1').style.display = 'none';
-        document.getElementById('chat2').style.display = 'none';
-        document.getElementById('chat3').style.display = 'none';
         document.getElementById('chat' + id).style.display = 'flex';
     }
 
