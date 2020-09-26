@@ -10,7 +10,8 @@ export const MainBox = styled.div`
       grid-template-rows: ${pageH}px;
       width: ${pageW}px;
       height: ${pageH}px;                     
-      max-height: ${pageH}px;                     
+      max-height: ${pageH}px;      
+      margin: 0;               
      `;
 
 export const ChatList = styled.div`
@@ -65,8 +66,8 @@ export const Me = styled.div`
      `;
 
 export const ScrollingArea = styled.div`
-      display: block;                
-      grid-row: 2;            
+      display: block;                     
+      grid-row: 2;          
       overflow: scroll;
       flex: 1;
       min-height: 0;
@@ -78,7 +79,7 @@ export const Chat = styled.div`
       justify-content: flex-end;
       align-items: flex-end;
       position: relative;
-      bottom: 0;
+      bottom: 0;      
       font-size: 13pt;
       padding: 30px 40px;      
      `;

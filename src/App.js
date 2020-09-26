@@ -18,6 +18,8 @@ const App = () => {
 
     document.title = 'Chatler';
     const [room, switchRoom] = useState(1);
+    const messageArea = React.createRef();
+    const scrollingArea = React.createRef();
 
     const wannaSwitchRoom = async (e) => {
         e.preventDefault();
@@ -36,7 +38,7 @@ const App = () => {
 
     const pushMessage = e => {
         e.preventDefault();
-        let text = document.getElementById('messageArea').value;
+        let text = messageArea.current.value;
         if (text){
             let newMessage = document.createElement('div');
             newMessage.style = `display: block;     
@@ -53,9 +55,9 @@ const App = () => {
 
             newMessage.innerHTML = text;
             document.getElementById('chat' + room).append(newMessage);
-            document.getElementById('scrollingArea').scrollTop = document.getElementById('scrollingArea').scrollHeight;
-            document.getElementById('messageArea').value = '';
-            document.getElementById('messageArea').focus();
+            scrollingArea.current.scrollTop = scrollingArea.current.scrollHeight;
+            messageArea.current.value = '';
+            messageArea.current.focus();
 
             setTimeout(() => {
                 let newAnswer = document.createElement('div');
@@ -73,7 +75,7 @@ const App = () => {
                 `;
                 newAnswer.innerHTML = answer(text);
                 document.getElementById('chat' + room).append(newAnswer);
-                document.getElementById('scrollingArea').scrollTop = document.getElementById('scrollingArea').scrollHeight;
+                scrollingArea.current.scrollTop = scrollingArea.current.scrollHeight;
             }, 1000);
         }
     }
@@ -94,12 +96,12 @@ const App = () => {
 
           <ChatBox>
               <Title> Room {room} </Title>
-              <ScrollingArea id = 'scrollingArea'>
+              <ScrollingArea ref = {scrollingArea}>
                 <Chat id = 'chat1'/>
                 <Chat id = 'chat2'/>
                 <Chat id = 'chat3'/>
               </ScrollingArea>
-              <TextBox id = 'messageArea' placeholder = 'Type your message and press enter' onKeyDown = {e => checkMessage(e)}/>
+              <TextBox ref = {messageArea} placeholder = 'Type your message and press enter' onKeyDown = {e => checkMessage(e)}/>
           </ChatBox>
 
       </MainBox>
